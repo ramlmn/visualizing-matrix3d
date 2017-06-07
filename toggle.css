@@ -1,0 +1,114 @@
+.item-input--switch {
+  height: 3em;
+  padding: 0 1em;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+.item-input--switch:hover {
+  background: #f5f5f5;
+}
+
+.item-input--switch input[type=checkbox] {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.item-input--switch .switch {
+  display: inline-block;
+  width: 37px;
+  height: 14px;
+  position: relative;
+  margin-right: .5em;
+}
+
+.item-input--switch .switch .track {
+  border-radius: 19px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1px;
+  right: 1px;
+  background: rgba(0,0,0,0.26);
+  transform: translateZ(0);
+  overflow: hidden;
+}
+
+.item-input--switch .switch .track::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #9FA8DA;
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+  transform: translateZ(0);
+  border-radius: 19px;
+}
+
+@supports (transform: none) {
+  .item-input--switch .switch .track::before {
+    border-radius: 0;
+  }
+}
+
+.item-input--switch .switch .handle {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 20px;
+  background: #fafafa;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5),inset 0 0 0 2px transparent;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: all 0.15s ease-out;
+  transform: translateZ(0);
+}
+
+.item-input--switch .switch .handle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #3F51B5;
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+  transform: translateZ(0);
+  border-radius: 10px;
+}
+
+@supports (transform: none) {
+  .item-input--switch .switch .handle::before {
+    border-radius: 0;
+  }
+}
+
+.item-input--switch input:focus+.switch .handle {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5),
+    inset 0 0 0 2px #3F51B5,
+    0 0 0 8px rgba(63,81,181,.26);
+}
+
+.item-input--switch :checked+.switch .track::before {
+  opacity: 1;
+}
+
+.item-input--switch :checked+.switch .handle {
+  transform: translate3d(17px, 0, 0);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5),
+    inset 0 0 0 2px transparent;
+}
+
+.item-input--switch :checked+.switch .handle::before {
+  opacity: 1;
+}

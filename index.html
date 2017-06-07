@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Ram Lmn">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS matrix3d</title>
+
+  <link rel="stylesheet" href="slider.css">
+  <link rel="stylesheet" href="toggle.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>Understanding CSS3 Matrix3D transforms</header>
+
+  <main>
+
+    <section class="demo-section">
+
+      <div class="demo-output">
+        <div class="demo-output__container" id="demo__container">
+          <div class="demo-element">
+            <div class="side side-back">3</div>
+            <div class="side side-bottom">6</div>
+            <div class="side side-right">2</div>
+            <div class="side side-left">4</div>
+            <div class="side side-front">1</div>
+            <div class="side side-top">5</div>
+          </div>
+          <p class="axial-line axial-line--x"></p>
+          <p class="axial-line axial-line--y"></p>
+          <p class="axial-line axial-line--z"></p>
+        </div>
+      </div>
+
+      <code class="demo-code"></code>
+
+    </section>
+
+    <section class="controls-section">
+
+      <div class="transform-settings">
+
+        <label class="item-input item-input--switch">
+          <input type="checkbox" id="toggle-view">
+          <span class="switch">
+            <span class="track"></span>
+            <span class="handle"></span>
+          </span>
+          <span>Toggle view</span>
+        </label>
+
+        <h2 class="settings-list-header">Transform Controls</h2>
+        <div class="basic-controls">
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">scale<sub>x</sub>(1)</span>
+            <input type="range" id="m11" min="-4" max="5" step="0.1" value="1" data-label="scale<sub>x</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">shear<sub>yx</sub>(0)</span>
+            <input type="range" id="m12" min="-2" max="2" step="0.1" value="0" data-label="shear<sub>yx</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">shear<sub>zx</sub>(0)</span>
+            <input type="range" id="m13" min="-2" max="2" step="0.1" value="0" data-label="shear<sub>yx</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">P<sub>x</sub>(0)</span>
+            <input type="range" id="m14" min="-0.009" max="0.009" step="0.001" value="0" data-label="P<sub>x</sub>($)">
+          </div>
+
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">shear<sub>xy</sub>(0)</span>
+            <input type="range" id="m21" min="-2" max="2" step="0.1" value="0" data-label="shear<sub>zx</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">scale<sub>y</sub>(1)</span>
+            <input type="range" id="m22" min="-4" max="5" step="0.1" value="1" data-label="scale<sub>y</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">shear<sub>zy</sub>(0)</span>
+            <input type="range" id="m23" min="-2" max="2" step="0.1" value="0" data-label="shear<sub>zy</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">P<sub>y</sub>(0)</span>
+            <input type="range" id="m24" min="-0.009" max="0.009" step="0.001" value="0" data-label="P<sub>y</sub>($)">
+          </div>
+
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">shear<sub>xz</sub>(0)</span>
+            <input type="range" id="m31" min="-2" max="2" step="0.1" value="0" data-label="shear<sub>xz</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">shear<sub>yz</sub>(0)</span>
+            <input type="range" id="m32" min="-2" max="2" step="0.1" value="0" data-label="shear<sub>yz</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">scale<sub>z</sub>(1)</span>
+            <input type="range" id="m33" min="-4" max="5" step="0.1" value="1" data-label="scale<sub>z</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">P<sub>z</sub>(0)</span>
+            <input type="range" id="m34" min="-0.009" max="0.009" step="0.001" value="0" data-label="P<sub>z</sub>($)">
+          </div>
+
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">translate<sub>x</sub>(0)</span>
+            <input type="range" id="m41" min="-200" max="200" step="5" value="0" data-label="translate<sub>x</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">translate<sub>y</sub>(0)</span>
+            <input type="range" id="m42" min="-200" max="200" step="5" value="0" data-label="translate<sub>y</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">translate<sub>z</sub>(0)</span>
+            <input type="range" id="m43" min="-200" max="200" step="5" value="0" data-label="translate<sub>z</sub>($)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">P<sub>w</sub>(0)</span>
+            <input type="range" id="m44" min="0.1" max="2" step="0.1" value="1" data-label="P<sub>w</sub>($)">
+          </div>
+        </div>
+
+
+        <h2 class="settings-list-header">Additional Controls (not part of CSS3 Matrix3D)</h2>
+        <div class="additional-controls">
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">rotateX(0deg)</span>
+            <input type="range" id="rotateX" min="-360" max="360" step="1" value="0" data-label="rotateX($deg)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">rotateY(0deg)</span>
+            <input type="range" id="rotateY" min="-360" max="360" step="1" value="0" data-label="rotateY($deg)">
+          </div>
+          <div class="item-input item-input--slider">
+            <span class="item-input__label">rotateZ(0deg)</span>
+            <input type="range" id="rotateZ" min="-360" max="360" step="1" value="0" data-label="rotateZ($deg)">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="notes">
+        <h1 class="notes-heading">Notes:</h1>
+        <ul>
+          <li>
+            According to <a href="https://www.w3.org/TR/css-transforms-1/#mathematical-description" target="_blank" rel="noopener">CSS Transforms Module Level 1</a>, <code>translate[XYZ]</code> are placed along column 4 of a matrix, but browsers implement by swapping column and row 4.
+          </li>
+          <li>
+            <a href="https://www.w3.org/TR/css-transforms-1/#interpolation-of-3d-matrices" target="_blank" rel="noopener">Interpolation of 3D Matrices</a>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
