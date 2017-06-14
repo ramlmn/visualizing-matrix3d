@@ -270,7 +270,7 @@ code {
   }
 
   .controls-section {
-    height: 35vh;
+    height: 40vh;
     width: 100%;
     max-width: 100%;
     overflow: auto;
@@ -303,5 +303,16 @@ code {
 
   .basic-controls .item-input--slider {
     min-width: 100%;
+  }
+
+  header {
+    position: fixed;
+    background: transparent;
+    box-shadow: none;
+    color: rgba(0, 0, 0, .4);
+  }
+
+  section {
+    min-width: initial;
   }
 }
